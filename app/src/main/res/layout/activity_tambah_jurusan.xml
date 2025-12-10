@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F7F7F7">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <include
+            android:id="@+id/myHeader"
+            layout="@layout/activity_header" />
+
+        <ImageView
+            android:id="@+id/btnBackJurusan"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/back_icon"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="20dp"/>
+
+        <!-- Konten -->
+        <TextView
+            android:id="@+id/tvHeaderJurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TAMBAH JURUSAN"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Nama Jurusan"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etNamaJurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jurusan Baru"
+            android:background="@drawable/border_edittext"
+            android:textColor="#000000"
+            android:textColorHint="#9E9E9E"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+
+
+
+        <Button
+            android:id="@+id/btnSimpanJurusan"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#1F82C8"
+            android:text="Simpan"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</ScrollView>

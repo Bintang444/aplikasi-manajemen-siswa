@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">tugasPKLKu</string>
+    <string-array name="jurusan_array">
+        <item>Semua Jurusan</item>
+        <item>RPL</item>
+        <item>TKJ</item>
+        <item>MM</item>
+        <item>AKL</item>
+    </string-array>
+
+    <string name="nama_siswa_garis"><u>Nama Siswa</u></string>
+
+</resources>

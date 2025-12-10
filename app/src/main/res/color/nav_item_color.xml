@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Warna pas item aktif -->
+    <item android:color="#2196F3" android:state_checked="true"/> <!-- biru -->
+    <!-- Warna pas item gak aktif -->
+    <item android:color="@color/black"/> <!-- abu abu -->
+</selector>
