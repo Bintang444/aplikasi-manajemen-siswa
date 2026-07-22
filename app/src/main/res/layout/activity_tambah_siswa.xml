@@ -3,23 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F7F7F7">
+    android:padding="@dimen/spacing_lg"
+    android:background="@color/background">
 
-    <!-- HEADER -->
-    <include
-        android:id="@+id/myHeader"
-        layout="@layout/activity_header"
+    <!-- Top Action Bar -->
+    <LinearLayout
+        android:id="@+id/headerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-    <!-- Konten -->
+        <ImageView
+            android:id="@+id/btnBackSiswa"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/back_icon"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/tvHeaderSiswa"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tambah_siswa_title"
+            android:textAlignment="center"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_h3"
+            android:textStyle="bold"
+            android:layout_marginEnd="28dp" />
+    </LinearLayout>
+
+    <!-- Scrollable Form Body -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/myHeader"
-        android:layout_marginTop="20dp"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerTitle"
+        android:layout_marginTop="@dimen/spacing_lg"
         android:scrollbars="none">
 
         <LinearLayout
@@ -27,161 +51,134 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/btnBackSiswa"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/back_icon"
-                android:clickable="true"
-                android:focusable="true" />
-
+            <!-- NIS -->
             <TextView
-                android:id="@+id/tvHeaderSiswa"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TAMBAH SISWA"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:layout_marginTop="20dp"/>
-
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:text="NIS"
-                android:textColor="@color/black"
-                android:textSize="18sp"
+                android:text="@string/tambah_siswa_nis"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body_small"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etNIS"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukkan NIS"
-                android:background="@drawable/border_edittext"
-                android:textColor="#000000"
-                android:textColorHint="#9E9E9E"
-                android:padding="10dp"
-                />
+                android:layout_height="@dimen/spacing_huge"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_search_input"
+                android:hint="@string/tambah_siswa_nis_hint"
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:textColor="@color/text_secondary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/text_body_small" />
 
+            <!-- NAMA -->
             <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NAMA"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="14dp"
+                android:text="@string/tambah_siswa_nama"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body_small"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etNama"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukkan Nama Siswa"
-                android:background="@drawable/border_edittext"
-                android:textColor="#000000"
-                android:textColorHint="#9E9E9E"
-                android:padding="10dp" />
+                android:layout_height="@dimen/spacing_huge"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_search_input"
+                android:hint="@string/tambah_siswa_nama_hint"
+                android:paddingHorizontal="@dimen/spacing_md"
+                android:textColor="@color/text_secondary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/text_body_small" />
 
-            <!-- cardview jenis kelamin -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:elevation="4dp"
-                android:backgroundTint="#FFFFFF"
-                android:padding="12dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Jenis Kelamin"
-                        android:textSize="17sp"
-                        android:textColor="#000000" />
-
-                    <Spinner
-                        android:id="@+id/spinnerJenisKelamin"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+            <!-- JENIS KELAMIN -->
             <TextView
-                android:id="@+id/textView17"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ALAMAT"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="14dp"
+                android:text="@string/tambah_siswa_jenkel"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body_small"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_huge"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_search_input">
+
+                <Spinner
+                    android:id="@+id/spinnerJenisKelamin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:paddingHorizontal="12dp" />
+            </FrameLayout>
+
+            <!-- JURUSAN -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/tambah_siswa_jurusan"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body_small"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spacing_huge"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_search_input">
+
+                <Spinner
+                    android:id="@+id/spinnerJurusan"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:paddingHorizontal="12dp" />
+            </FrameLayout>
+
+            <!-- ALAMAT -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/tambah_siswa_alamat"
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_body_small"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/etAlamat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Masukkan Alamat Siswa"
+                android:layout_height="90dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_search_input"
+                android:gravity="top|start"
+                android:hint="@string/tambah_siswa_alamat_hint"
                 android:inputType="textMultiLine"
-                android:lines="3"
-                android:scrollbars="vertical"
-                android:background="@drawable/border_edittext"
-                android:textColor="#000000"
-                android:textColorHint="#9E9E9E" />
+                android:padding="@dimen/spacing_md"
+                android:textColor="@color/text_secondary"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/text_body_small" />
 
-            <!-- cardview jurusan -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:elevation="4dp"
-                android:backgroundTint="#FFFFFF"
-                android:padding="12dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="8dp">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Jurusan"
-                        android:textSize="17sp"
-                        android:textColor="#000000" />
-
-                    <Spinner
-                        android:id="@+id/spinnerJurusan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSimpan"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"
-                android:text="Simpan"
-                android:layout_marginTop="50dp"
-                android:textColor="@android:color/white"
-                android:backgroundTint="#1F82C8"
-                android:layout_gravity="center"/>
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/touch_target_min"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="@dimen/spacing_xxl"
+                android:backgroundTint="@color/primary"
+                android:text="@string/tambah_siswa_simpan"
+                android:textAllCaps="false"
+                android:textColor="@color/on_primary"
+                android:textSize="@dimen/text_body"
+                app:cornerRadius="@dimen/radius_button" />
+
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

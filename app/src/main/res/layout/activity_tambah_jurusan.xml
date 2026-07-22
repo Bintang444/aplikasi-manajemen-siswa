@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F7F7F7">
+    android:padding="@dimen/spacing_lg"
+    android:background="@color/surface_variant">
 
+    <!-- Header -->
+    <include
+        android:id="@+id/myHeader"
+        layout="@layout/activity_header" />
+
+    <!-- Back + Title -->
     <LinearLayout
+        android:id="@+id/headerTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <!-- Header -->
-        <include
-            android:id="@+id/myHeader"
-            layout="@layout/activity_header" />
+        android:layout_below="@id/myHeader"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
         <ImageView
             android:id="@+id/btnBackJurusan"
@@ -22,52 +27,63 @@
             android:src="@drawable/back_icon"
             android:clickable="true"
             android:focusable="true"
-            android:layout_marginTop="20dp"/>
+            android:contentDescription="@string/app_name" />
 
-        <!-- Konten -->
         <TextView
             android:id="@+id/tvHeaderJurusan"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TAMBAH JURUSAN"
+            android:layout_weight="1"
+            android:text="@string/tambah_jurusan_title"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="Nama Jurusan"
-            android:textColor="@color/black"
-            android:textSize="17sp"
             android:textStyle="bold" />
+    </LinearLayout>
 
-        <EditText
-            android:id="@+id/etNamaJurusan"
+    <!-- Konten -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headerTitle"
+        android:scrollbars="none">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Jurusan Baru"
-            android:background="@drawable/border_edittext"
-            android:textColor="#000000"
-            android:textColorHint="#9E9E9E"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"/>
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xl"
+                android:text="@string/tambah_jurusan_nama"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
+            <EditText
+                android:id="@+id/etNamaJurusan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tambah_jurusan_hint"
+                android:background="@drawable/border_edittext"
+                android:textColor="@color/black"
+                android:textColorHint="@color/text_hint"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"/>
 
-        <Button
-            android:id="@+id/btnSimpanJurusan"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#1F82C8"
-            android:text="Simpan"
-            android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnSimpanJurusan"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/spacing_huge"
+                android:backgroundTint="@color/primary"
+                android:text="@string/tambah_jurusan_simpan"
+                android:textColor="@android:color/white" />
 
-    </LinearLayout>
-</ScrollView>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

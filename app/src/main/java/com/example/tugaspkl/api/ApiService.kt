@@ -2,7 +2,6 @@ package com.example.tugaspkl.api
 
 import com.example.tugaspkl.model.LoginResponse
 import com.example.tugaspkl.model.Jurusan
-import com.example.tugaspkl.model.ResponseSiswa
 import com.example.tugaspkl.model.Siswa
 import okhttp3.ResponseBody
 import retrofit2.Call

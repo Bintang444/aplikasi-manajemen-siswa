@@ -1,53 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp"
-    card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="2dp">
+    android:layout_marginBottom="@dimen/spacing_md"
+    card_view:cardCornerRadius="@dimen/radius_card"
+    card_view:cardElevation="@dimen/elevation_none"
+    card_view:cardBackgroundColor="@color/card">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="14dp">
 
         <TextView
             android:id="@+id/tvNamaJurusan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jurusan"
+            tools:text="Jurusan"
             android:textStyle="bold"
-            android:textSize="16sp" />
+            android:textSize="15sp"
+            android:textColor="@color/text_primary" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#C1BDBD"
-            android:layout_marginTop="4dp" />
+            android:background="@color/border"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/spacing_sm" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="end"
-            android:paddingTop="6dp">
+            android:gravity="end">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnEditJurusan"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"
-                android:backgroundTint="#1F82C8"/>
+                android:layout_height="@dimen/touch_target_min"
+                android:text="@string/item_edit"
+                android:textSize="@dimen/text_caption"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/radius_button"
+                android:backgroundTint="@color/primary" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnHapusJurusan"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hapus"
-                android:layout_marginStart="8dp"
-                android:backgroundTint="#E53935" />
+                android:layout_height="@dimen/touch_target_min"
+                android:text="@string/item_hapus"
+                android:textSize="@dimen/text_caption"
+                android:textAllCaps="false"
+                app:cornerRadius="@dimen/radius_button"
+                android:backgroundTint="@color/danger"
+                android:layout_marginStart="@dimen/spacing_sm" />
         </LinearLayout>
 
     </LinearLayout>

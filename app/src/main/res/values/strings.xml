@@ -1,5 +1,83 @@
 <resources>
     <string name="app_name">tugasPKLKu</string>
+
+    <!-- Welcome -->
+    <string name="welcome_title">Selamat Datang</string>
+    <string name="welcome_desc">Aplikasi Manajemen Siswa. Tempat untuk mengelola data siswa dan jurusan dengan mudah dan cepat.</string>
+    <string name="welcome_masuk">MASUK</string>
+    <string name="welcome_copyright">© SMKMAHARDHIKA - 2025</string>
+
+    <!-- Login -->
+    <string name="login_title">SELAMAT DATANG</string>
+    <string name="login_nama">Nama</string>
+    <string name="login_nama_hint">Nama Pengguna</string>
+    <string name="login_password">Kata Sandi</string>
+    <string name="login_password_hint">Kata Sandi</string>
+    <string name="login_masuk">MASUK</string>
+
+    <!-- Header -->
+    <string name="header_welcome">Selamat Datang di</string>
+    <string name="header_lab">LAB RPL BBPPMPV BMTI</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_greeting">Selamat Pagi,</string>
+    <string name="dashboard_subtitle">Selamat datang di dashboard!</string>
+    <string name="dashboard_siswa">Siswa</string>
+    <string name="dashboard_siswa_desc">Kelola data siswa</string>
+    <string name="dashboard_jurusan">Jurusan</string>
+    <string name="dashboard_jurusan_desc">Kelola jurusan</string>
+    <string name="dashboard_data_siswa">Data Siswa</string>
+    <string name="dashboard_data_siswa_desc">Lihat semua siswa</string>
+    <string name="dashboard_data_jurusan">Data Jurusan</string>
+    <string name="dashboard_data_jurusan_desc">Daftar jurusan</string>
+    <string name="dashboard_aktivitas">Aktivitas terbaru</string>
+    <string name="dashboard_lihat_semua">Lihat semua</string>
+
+    <!-- Siswa Fragment -->
+    <string name="siswa_title">DATA SISWA</string>
+    <string name="siswa_search_hint">Cari NIS atau Nama…</string>
+    <string name="siswa_tambah">Tambah Siswa</string>
+    <string name="siswa_daftar">Daftar Siswa</string>
+
+    <!-- Jurusan Fragment -->
+    <string name="jurusan_title">JURUSAN</string>
+    <string name="jurusan_search_hint">Cari Nama Jurusan…</string>
+    <string name="jurusan_tambah">Tambah Jurusan</string>
+    <string name="jurusan_daftar">Daftar Jurusan</string>
+
+    <!-- Profile -->
+    <string name="profile_kelola">Kelola data siswa &amp; jurusan</string>
+    <string name="profile_info_akun">Informasi Akun</string>
+    <string name="profile_username">Username</string>
+    <string name="profile_keluar">Keluar</string>
+
+    <!-- Tambah Siswa -->
+    <string name="tambah_siswa_title">Tambah Siswa</string>
+    <string name="tambah_siswa_nis">NIS</string>
+    <string name="tambah_siswa_nis_hint">Masukkan NIS</string>
+    <string name="tambah_siswa_nama">Nama Lengkap</string>
+    <string name="tambah_siswa_nama_hint">Masukkan Nama Siswa</string>
+    <string name="tambah_siswa_jenkel">Jenis Kelamin</string>
+    <string name="tambah_siswa_jurusan">Jurusan</string>
+    <string name="tambah_siswa_alamat">Alamat</string>
+    <string name="tambah_siswa_alamat_hint">Masukkan Alamat Siswa</string>
+    <string name="tambah_siswa_simpan">Simpan Data</string>
+
+    <!-- Tambah Jurusan -->
+    <string name="tambah_jurusan_title">TAMBAH JURUSAN</string>
+    <string name="tambah_jurusan_nama">Nama Jurusan</string>
+    <string name="tambah_jurusan_hint">Jurusan Baru</string>
+    <string name="tambah_jurusan_simpan">Simpan</string>
+
+    <!-- Items -->
+    <string name="item_edit">Edit</string>
+    <string name="item_hapus">Hapus</string>
+
+    <!-- Recent Activity -->
+    <string name="recent_activity_title">Activity Title</string>
+    <string name="recent_activity_date">12 Oct 2025</string>
+
+    <!-- Jurusan Array -->
     <string-array name="jurusan_array">
         <item>Semua Jurusan</item>
         <item>RPL</item>
@@ -7,7 +85,4 @@
         <item>MM</item>
         <item>AKL</item>
     </string-array>
-
-    <string name="nama_siswa_garis"><u>Nama Siswa</u></string>
-
 </resources>

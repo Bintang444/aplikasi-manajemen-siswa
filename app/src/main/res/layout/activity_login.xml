@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="@dimen/spacing_xl"
     tools:context=".ui.auth.LoginActivity">
 
     <ImageView
@@ -13,27 +13,28 @@
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        app:srcCompat="@drawable/logobmti" />
+        android:layout_marginTop="60dp"
+        app:srcCompat="@drawable/logobmti"
+        android:contentDescription="@string/app_name" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageView"
-        android:text="SELAMAT DATANG"
+        android:text="@string/login_title"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/spacing_xl"
         android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/formContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="@dimen/spacing_xl"
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
@@ -41,18 +42,17 @@
             android:id="@+id/textView13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nama"
+            android:text="@string/login_nama"
             android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginTop="90dp"/>
+            android:textSize="@dimen/text_h2"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/etUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@android:drawable/ic_menu_edit"
-            android:hint="Nama Pengguna"
+            android:hint="@string/login_nama_hint"
             android:padding="10dp"
             android:textSize="17sp" />
 
@@ -60,18 +60,18 @@
             android:id="@+id/textView14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kata Sandi"
+            android:text="@string/login_password"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/text_h2"
             android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="@dimen/spacing_xl"/>
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@android:drawable/ic_lock_lock"
-            android:hint="Kata Sandi"
+            android:hint="@string/login_password_hint"
             android:inputType="textPassword"
             android:padding="10dp"
             android:textSize="17sp" />
@@ -80,9 +80,9 @@
             android:id="@+id/btnLogin"
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="#1F82C8"
-            android:text="MASUK" />
+            android:layout_marginTop="@dimen/spacing_xxxl"
+            android:backgroundTint="@color/primary"
+            android:text="@string/login_masuk" />
     </LinearLayout>
 
 </RelativeLayout>

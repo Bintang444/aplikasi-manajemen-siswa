@@ -4,96 +4,87 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="#F7F7F7"
+    android:padding="@dimen/spacing_lg"
+    android:background="@color/background"
     tools:context=".ui.main.SiswaFragment">
 
-    <!-- KONTEN -->
+    <!-- Header Title -->
+    <TextView
+        android:id="@+id/tvHeaderTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:text="@string/siswa_title"
+        android:textAlignment="center"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_h3"
+        android:textStyle="bold" />
+
+    <!-- Search & Action Bar -->
     <LinearLayout
-        android:id="@+id/contentLayout"
+        android:id="@+id/searchLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvHeaderTitle"
+        android:layout_marginTop="@dimen/spacing_xl"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:hint="@string/siswa_search_hint"
+            android:background="@drawable/bg_search_input"
+            android:drawableStart="@drawable/icon_search"
+            android:drawablePadding="@dimen/spacing_sm"
+            android:textColor="@color/text_secondary"
+            android:textColorHint="@color/text_hint"
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:textSize="@dimen/text_body_small"
+            android:layout_marginEnd="@dimen/spacing_sm"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTambahSiswa"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:text="@string/siswa_tambah"
+            android:textSize="@dimen/text_caption"
+            android:textAllCaps="false"
+            app:cornerRadius="@dimen/radius_button"
+            android:backgroundTint="@color/primary" />
+    </LinearLayout>
+
+    <Spinner
+        android:id="@+id/spinnerJurusan"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_below="@id/searchLayout"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:background="@drawable/bg_search_input"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:textSize="@dimen/text_body_small" />
+
+    <TextView
+        android:id="@+id/tvSectionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerJurusan"
+        android:layout_marginTop="@dimen/spacing_lg"
+        android:text="@string/siswa_daftar"
+        android:textColor="@color/text_primary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- List RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSiswa"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="20dp">
+        android:layout_below="@id/tvSectionLabel"
+        android:layout_marginTop="@dimen/spacing_md"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/spacing_lg" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DATA SISWA"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <EditText
-                android:id="@+id/etSearch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Cari NIS atau Nama"
-                android:background="@drawable/border_edittext"
-                android:drawableStart="@drawable/icon_search"
-                android:textColor="#000000"
-                android:textColorHint="#9E9E9E"
-                android:padding="10dp"
-                android:layout_marginEnd="10dp"/>
-
-            <Button
-                android:id="@+id/btnTambahSiswa"
-                android:layout_width="141dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#1F82C8"
-                android:text="Tambah Siswa" />
-        </LinearLayout>
-
-        <!-- CARDVIEW SPINNER -->
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:elevation="4dp"
-            android:backgroundTint="#FFFFFF"
-            app:cardCornerRadius="12dp"
-            android:padding="8dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Jurusan"
-                    android:textSize="17sp"
-                    android:textColor="#000000" />
-
-                <Spinner
-                    android:id="@+id/spinnerJurusan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:entries="@array/jurusan_array"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- RECYCLERVIEW -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSiswa"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:paddingBottom="0dp" />
-
-    </LinearLayout>
 </RelativeLayout>

@@ -46,6 +46,10 @@ class SiswaFragment : Fragment() {
         val etSearch = view.findViewById<EditText>(R.id.etSearch)
         spinnerJurusan = view.findViewById(R.id.spinnerJurusan)
 
+        val initialAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listOf("Semua Jurusan"))
+        initialAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerJurusan.adapter = initialAdapter
+
         view.findViewById<View>(R.id.btnTambahSiswa).setOnClickListener {
             startActivity(Intent(requireContext(), TambahSiswaActivity::class.java))
         }
@@ -68,7 +72,6 @@ class SiswaFragment : Fragment() {
         )
         rvSiswa.adapter = siswaAdapter
 
-        // Search listener
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -77,7 +80,6 @@ class SiswaFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Spinner listener
         spinnerJurusan.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 filterData(etSearch.text.toString(), jurusanList[position])
@@ -92,7 +94,6 @@ class SiswaFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         loadDataSiswa()
-
         view?.findViewById<EditText>(R.id.etSearch)?.setText("")
         view?.findViewById<Spinner>(R.id.spinnerJurusan)?.setSelection(0)
     }
@@ -137,7 +138,6 @@ class SiswaFragment : Fragment() {
             .setTitle("Konfirmasi Hapus")
             .setMessage("Yakin mau hapus siswa ${siswa.nama}?")
             .setPositiveButton("Hapus") { _, _ ->
-                // Kalau user pilih "Hapus"
                 deleteSiswaConfirmed(siswa)
             }
             .setNegativeButton("Batal", null)
@@ -145,7 +145,7 @@ class SiswaFragment : Fragment() {
     }
 
     private fun deleteSiswaConfirmed(siswa: Siswa) {
-        ApiClient.instance.deleteSiswa(siswa.id_siswa.toInt())
+        ApiClient.instance.deleteSiswa(siswa.id_siswa)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                     if (response.isSuccessful) {
@@ -168,7 +168,7 @@ class SiswaFragment : Fragment() {
 
     private fun filterData(keyword: String, jurusan: String) {
         val filteredList = allSiswaList.filter { siswa ->
-            val matchKeyword = siswa.nis.contains(keyword, true) || siswa.nama.contains(keyword, true)
+            val matchKeyword = keyword.isEmpty() || siswa.nis.contains(keyword, true) || siswa.nama.contains(keyword, true)
             val matchJurusan = jurusan == "Semua Jurusan" || siswa.nama_jurusan.equals(jurusan, true)
             matchKeyword && matchJurusan
         }

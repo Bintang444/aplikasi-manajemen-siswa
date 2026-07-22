@@ -2,6 +2,7 @@ package com.example.tugaspkl.ui.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -36,18 +37,18 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val etUsername = findViewById<EditText>(R.id.etUsername)
-        // size icon
+        val iconSize = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, 24f, resources.displayMetrics
+        ).toInt()
+
         val editDrawable = getDrawable(android.R.drawable.ic_menu_edit)
-        editDrawable?.setBounds(0, 0, 80, 80)
+        editDrawable?.setBounds(0, 0, iconSize, iconSize)
         etUsername.setCompoundDrawables(editDrawable, null, null, null)
-        // size icon
 
         val etPassword = findViewById<EditText>(R.id.etPassword)
-        // size icon
         val lockDrawable = getDrawable(android.R.drawable.ic_lock_lock)
-        lockDrawable?.setBounds(0, 0, 80, 80)
+        lockDrawable?.setBounds(0, 0, iconSize, iconSize)
         etPassword.setCompoundDrawables(lockDrawable, null, null, null)
-        // size icon
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
 

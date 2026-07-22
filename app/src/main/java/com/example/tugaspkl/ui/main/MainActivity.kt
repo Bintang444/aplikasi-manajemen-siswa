@@ -8,14 +8,26 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
+    private val dashboardFragment = DashboardFragment()
+    private val siswaFragment = SiswaFragment()
+    private val jurusanFragment = JurusanFragment()
+    private val profileFragment = ProfileFragment()
+    private var activeFragment: Fragment = dashboardFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        // Tampilkan Dashboard pertama kali
-        loadFragment(DashboardFragment())
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
+                .add(R.id.fragment_container, dashboardFragment, "dashboard")
+                .add(R.id.fragment_container, siswaFragment, "siswa").hide(siswaFragment)
+                .add(R.id.fragment_container, jurusanFragment, "jurusan").hide(jurusanFragment)
+                .add(R.id.fragment_container, profileFragment, "profile").hide(profileFragment)
+                .commit()
+        }
 
         var lastClickTime = 0L
 
@@ -24,19 +36,22 @@ class MainActivity : AppCompatActivity() {
             lastClickTime = System.currentTimeMillis()
 
             when (item.itemId) {
-                R.id.nav_dashboard -> loadFragment(DashboardFragment())
-                R.id.nav_siswa -> loadFragment(SiswaFragment())
-                R.id.nav_jurusan -> loadFragment(JurusanFragment())
-                R.id.nav_profile -> loadFragment(ProfileFragment())
+                R.id.nav_dashboard -> switchToFragment(dashboardFragment)
+                R.id.nav_siswa -> switchToFragment(siswaFragment)
+                R.id.nav_jurusan -> switchToFragment(jurusanFragment)
+                R.id.nav_profile -> switchToFragment(profileFragment)
             }
             true
         }
     }
 
-    private fun loadFragment(fragment: Fragment) {
+    private fun switchToFragment(fragment: Fragment) {
+        if (fragment == activeFragment) return
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .commitAllowingStateLoss()
+            .hide(activeFragment)
+            .show(fragment)
+            .commit()
+        activeFragment = fragment
     }
 
     fun switchTab(tabId: Int) {

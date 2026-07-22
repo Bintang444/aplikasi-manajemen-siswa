@@ -17,7 +17,8 @@ class JurusanAdapter(
 
     // fungsi filter
     fun filterList(filteredList: List<Jurusan>) {
-        jurusanList = filteredList.toMutableList()
+        jurusanList.clear()
+        jurusanList.addAll(filteredList)
         notifyDataSetChanged()
     }
 

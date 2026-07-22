@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -13,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logobmti" />
+        android:src="@drawable/logobmti"
+        android:contentDescription="@string/app_name" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:layout_below="@+id/img2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
-        android:text="Selamat Datang"
+        android:text="@string/welcome_title"
         android:textSize="25sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -34,10 +34,10 @@
         android:layout_below="@+id/text1"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:padding="20dp"
-        android:text="Semua yang kamu butuhkan untuk mengatur kegiatan belajar ada di sini. Yuk, masuk dan mulai kelola kelasmu dengan cara yang lebih mudah, praktis, dan menyenangkan untuk mendukung proses belajar yang lebih efektif."
-        android:textColor="#545050"
-        android:textSize="16sp" />
+        android:padding="@dimen/spacing_xl"
+        android:text="@string/welcome_desc"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/text_body_large" />
 
     <Button
         android:id="@+id/btnMasuk"
@@ -48,10 +48,10 @@
         android:layout_marginTop="50dp"
         android:width="250dp"
         android:height="30dp"
-        android:backgroundTint="#1F82C8"
-        android:text="MASUK"
+        android:backgroundTint="@color/primary"
+        android:text="@string/welcome_masuk"
         android:textColor="@color/white"
-        android:textSize="18dp" />
+        android:textSize="@dimen/text_h3" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,6 +59,6 @@
         android:layout_below="@id/btnMasuk"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:text="© SMKMAHARDHIKA - 2025" />
+        android:text="@string/welcome_copyright" />
 
 </RelativeLayout>

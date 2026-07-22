@@ -7,6 +7,7 @@ import com.example.tugaspkl.R
 import com.example.tugaspkl.api.ApiClient
 import com.example.tugaspkl.model.Jurusan
 import com.example.tugaspkl.model.Siswa
+import com.example.tugaspkl.utils.RecentActivityManager
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,6 +27,7 @@ class TambahSiswaActivity : AppCompatActivity() {
     private var jurusanList: List<Jurusan> = emptyList()
     private var editMode = false
     private var editIdSiswa: Int = 0
+    private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +59,7 @@ class TambahSiswaActivity : AppCompatActivity() {
             btnSimpan.text = "Update"
 
             // isi data ke form
-            editIdSiswa = intent.getStringExtra("id_siswa")!!.toInt()
+            editIdSiswa = intent.getIntExtra("id_siswa", 0)
             etNIS.setText(intent.getStringExtra("nis"))
             etNama.setText(intent.getStringExtra("nama"))
             val jk = intent.getStringExtra("jk")
@@ -66,6 +68,7 @@ class TambahSiswaActivity : AppCompatActivity() {
         }
 
         btnSimpan.setOnClickListener {
+            if (isLoading) return@setOnClickListener
             if(editMode) updateSiswa() else simpanData()
         }
     }
@@ -123,10 +126,18 @@ class TambahSiswaActivity : AppCompatActivity() {
             return
         }
 
+        isLoading = true
+        btnSimpan.isEnabled = false
+        btnSimpan.text = "Menyimpan..."
+
         ApiClient.instance.tambahSiswa(nis, nama, jenisKelamin, alamat, idJurusan)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    isLoading = false
+                    btnSimpan.isEnabled = true
+                    btnSimpan.text = "Simpan"
                     if (response.isSuccessful) {
+                        RecentActivityManager.addActivity("Tambah siswa $nama")
                         Toast.makeText(this@TambahSiswaActivity, "Berhasil tambah siswa!", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
@@ -135,6 +146,9 @@ class TambahSiswaActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    isLoading = false
+                    btnSimpan.isEnabled = true
+                    btnSimpan.text = "Simpan"
                     Toast.makeText(this@TambahSiswaActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -152,10 +166,18 @@ class TambahSiswaActivity : AppCompatActivity() {
             return
         }
 
+        isLoading = true
+        btnSimpan.isEnabled = false
+        btnSimpan.text = "Menyimpan..."
+
         ApiClient.instance.updateSiswa(editIdSiswa, nis, nama, jenisKelamin, alamat, idJurusan)
             .enqueue(object : Callback<ResponseBody> {
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                    isLoading = false
+                    btnSimpan.isEnabled = true
+                    btnSimpan.text = "Update"
                     if(response.isSuccessful) {
+                        RecentActivityManager.addActivity("Update siswa $nama")
                         Toast.makeText(this@TambahSiswaActivity, "Data berhasil diupdate", Toast.LENGTH_SHORT).show()
                         finish()
                     } else {
@@ -164,6 +186,9 @@ class TambahSiswaActivity : AppCompatActivity() {
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                    isLoading = false
+                    btnSimpan.isEnabled = true
+                    btnSimpan.text = "Update"
                     Toast.makeText(this@TambahSiswaActivity, "Error: ${t.message}", Toast.LENGTH_SHORT).show()
                 }
             })
